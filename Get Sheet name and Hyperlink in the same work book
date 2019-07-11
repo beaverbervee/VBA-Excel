@@ -1,0 +1,13 @@
+Sub Sheetname()
+Dim i As Integer
+Dim Total As Integer
+Total = Worksheets.Count
+    Cells(1, 1).Value = "SheetName"
+    Cells(1, 2).Value = "Link"
+For i = 2 To Total
+    Cells(i, 1) = ActiveWorkbook.Worksheets(i).Name
+    Cells(i, 2).Select
+    ActiveSheet.Hyperlinks.Add Anchor:=Selection, Address:="", SubAddress:= _
+        ActiveWorkbook.Worksheets(i).Name & "!A1", TextToDisplay:="Sheet" & i
+Next i
+End Sub
